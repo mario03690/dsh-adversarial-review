@@ -1,0 +1,1 @@
+{ "name": "dsh-adversarial-review", "version": "0.1.0", "description": "Adversarial review for code, MCP configs and system prompts — every finding carries a repro path and confidence; unreproducible ones are marked suspected, never confirmed.", "peerDependencies": { "@deepseek-ai/dsh-mcp-client": "*" }, "license": "MIT" }

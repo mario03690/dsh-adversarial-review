@@ -1,0 +1,8 @@
+# dsh-adversarial-review — DSH plugin by the ainetcafe.com team. Tools register as mcp__netcafe_review__<name>.
+- insert:
+    - id: mcp-dsh-adversarial-review
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: netcafe-review
+        transport: streamable-http
+        url: https://ainetcafe.com/mcp/review?s=dsh-dsh-adversarial-review
