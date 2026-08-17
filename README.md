@@ -21,3 +21,20 @@ Thin config layer only (one `@deepseek-ai/dsh-mcp-client` row, shipped as `cordi
 First heavy call is free (anonymous, no signup); afterwards billed at real upstream cost, reported in every response; failed calls are not charged. Bring an [AllRouter](https://allrouter.ai) key to run any tool on a flagship model at direct rates. The config URL carries `?s=dsh-dsh-adversarial-review` — a channel tag identifying the install path, not you.
 
 **Disclosure:** built and run by the team behind [ainetcafe.com](https://ainetcafe.com). Full bundle: [dsh-netcafe](https://github.com/mario03690/dsh-netcafe). MIT.
+
+## Compatibility & permissions (at a glance)
+
+| Signal | This plugin |
+| --- | --- |
+| **Runtime** | dsh v0.1 developer preview (2026-08-13, Cordis v4). Touches only the MCP client config shape — the narrowest surface available. Verified against a live endpoint on 2026-08-17. |
+| **What runs locally** | Nothing. Ships one `cordis.patch.yml` row; there is no tool code, no build step and no lifecycle script in this package. |
+| **Filesystem access** | None. |
+| **Shell / process access** | None. |
+| **Network access** | Outbound HTTPS to `ainetcafe.com` only, from the MCP client that dsh already ships. |
+| **Credentials** | None required. No signup, no API key for the free tier. An optional AllRouter key, if you supply one, is sent by dsh as a request header and is never stored by us. |
+| **Data retention** | Documents and prompts are processed in memory and not retained. |
+| **Dependencies** | One peer dependency: `@deepseek-ai/dsh-mcp-client` (ships with dsh). |
+| **License** | MIT (see `LICENSE`). |
+| **Publisher** | The team that runs [ainetcafe.com](https://ainetcafe.com) — our own hosted service, free tier plus paid usage. Issues get a same-day reply. |
+
+> A directory listing is not a security review. Read `cordis.patch.yml` — it is short enough to read in full in under a minute.
