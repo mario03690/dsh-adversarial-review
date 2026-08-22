@@ -8,6 +8,32 @@ Not a scanner: it reviews code/config/prompts YOU provide, it does not attack th
 
 Start with `what_can_you_do` — describe your task in any language, get the exact tool and a ready-to-run call.
 
+<!-- TOOLS:BEGIN -->
+## What's in this pack
+
+10 tools, read from the live endpoint on 2026-08-22 — **this table is generated, not hand-written**, so it cannot drift away from what `tools/list` actually returns. The **Arguments** column is what the tool genuinely reads; it comes from the tool's own declared input schema.
+
+| Tool | What it does | Arguments | Price / call |
+|---|---|---|---|
+| `what_can_you_do` | Describe a task in plain language (any language) and get back exactly which tools on this server do it, with ready- | `task` | — |
+| `adversarial_review` | Adversarial code/config/design review. Probes named attack surfaces (injection, trust boundaries, secret handling,  | `code`, `text`, `diff`, `config`, `model`, `language` | $0.03 |
+| `mcp_config_audit` | Audit an MCP / agent config (JSON/YAML) for risk: over-broad tool permissions, destructive tools not annotated, sec | `config`, `text`, `code`, `model` | $0.02 |
+| `red_team_prompt` | Red-team YOUR OWN system prompt: given a system/instruction prompt, generate attack examples that try to break it ( | `prompt`, `system`, `text`, `model` | $0.02 |
+| `code_review` | Paste code or a git diff, get a concrete review: bugs, edge cases, security smells — each with a suggested fix. | `code`, `diff`, `language` | $0.02 |
+| `explain_code` | A code snippet → a plain-language explanation file (what it does, line-by-line, gotchas). | `code`, `language` | $0.02 |
+| `make_test_cases` | A function or spec → a table of test cases (input, expected, edge cases) as a Markdown file. | `code`, `spec` | $0.025 |
+| `resume_review` | Resume/CV review: score, concrete issues, rewritten bullet examples, ATS keyword gaps. Paste resume text; optional  | `resume`, `target_role` | $0.03 |
+| `contract_review` | Contract risk review: obligations, risky clauses by severity, missing protections, questions to raise. Paste contra | `contract`, `party` | $0.05 |
+| `polish_academic` | Academic English polishing: rough draft → publication-grade prose, with a change log. For papers, abstracts, cover  | `text`, `field` | $0.03 |
+
+`—` in the price column means the tool is not metered per call (session/trial-gated instead). Failed calls are never charged. Check it yourself:
+
+```sh
+curl -s -X POST https://ainetcafe.com/mcp/review -H 'content-type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+<!-- TOOLS:END -->
+
 ## Install
 
 ```sh
